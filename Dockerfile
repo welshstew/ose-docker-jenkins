@@ -17,9 +17,14 @@ USER jenkins
 
 WORKDIR /var/lib/jenkins
 
-ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk
+ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-devel
 ENV M2_HOME=/opt/apache-maven-$MAVEN_VERSION
+ENV MAVEN_HOME=/opt/apache-maven-$MAVEN_VERSION
 ENV PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:$JAVA_HOME/bin:$M2_HOME/bin
+
+# These are permalinks to the latest and greatest plugin versions
+
+COPY /var /var
 
 RUN curl -O https://updates.jenkins-ci.org/latest/openJDK-native-plugin.hpi 
 RUN curl -O https://updates.jenkins-ci.org/latest/maven-plugin.hpi
